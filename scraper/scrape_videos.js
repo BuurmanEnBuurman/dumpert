@@ -39,7 +39,7 @@ async function kaas() {
             console.log(`found ${new_posts} new videos`);
           } else {
             // or if it exists we can kill the script since we wont find anything new
-            process.exit();
+            process.exit(1);
           }
         }
       );
