@@ -46,6 +46,9 @@ async function kaas() {
           // get callback and check if new data is found
           if (results.upsertedCount === 1) {
             new_comments++
+          }else{
+            // no new comments so we can stop the scrapeing
+            process.exit(1)
           }
 
           console.clear();
