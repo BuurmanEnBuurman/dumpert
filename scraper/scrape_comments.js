@@ -49,7 +49,7 @@ async function kaas() {
           }
 
           console.clear();
-          console.log(`todo: ${posts.length - video_index}`);
+          console.log(`todo: ${posts.length - video_index} videos`);
           console.log(`found ${new_comments} new comments`);
         }
       );
