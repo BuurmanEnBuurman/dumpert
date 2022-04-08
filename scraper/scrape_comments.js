@@ -16,13 +16,11 @@ async function kaas() {
   let new_comments = 0;
   const db = (await clientPromise).db();
 
-  // since you can only comment videos that are one day old we only want these videos
-  const yesterday = moment().subtract(1, "days").toDate().toISOString()
 
-  // get the videos of the last day
+  // get all the videos so we can scrape them
   const posts = await db
     .collection("videos")
-    .find({ date: { $gte: yesterday } }, { _id: 0 })
+    .find({}, { _id: 0 })
     .toArray();
 
   // loop trough the videos and get the comments of each video
@@ -48,7 +46,7 @@ async function kaas() {
             new_comments++
           }else{
             // no new comments so we can stop the scrapeing
-            process.exit(1)
+            // process.exit(1)
           }
 
           console.clear();

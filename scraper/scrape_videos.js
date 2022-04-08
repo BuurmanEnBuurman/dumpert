@@ -23,6 +23,8 @@ async function kaas() {
     );
 
     posts.data.items.forEach((post) => {
+      post.article_id = parseInt(post.id.split("_")[0]);
+
       db.collection("videos").updateOne(
         { id: post.id },
         { $set: post },
