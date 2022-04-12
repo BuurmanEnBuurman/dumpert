@@ -2,7 +2,7 @@ import style from "./comment.module.css"
 
 export default function Comment(props){
     const comment = props.props
-    console.log(comment)
+    // console.log(comment)
     return (
         <div className={style.comment}>
             <div>{comment.author_username}</div>
