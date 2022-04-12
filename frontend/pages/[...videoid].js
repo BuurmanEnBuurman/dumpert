@@ -58,21 +58,19 @@ export async function getServerSideProps(ctx) {
     .toArray();
 
   let data = [];
-  // console.log(api_dumpert)
 
   api_dumpert.forEach((key) => {
     if (key.display_content === "-weggejorist-") {
-      const db_data = api_db.find((p) => {
+      const chached_comment = api_db.find((p) => {
         return p.id === key.id;
       });
-      key.content = db_data.display_content
-      console.log(key);
+      
+      // check if comment is scraped 
+      chached_comment ? (key.content = chached_comment.display_content) : (key.content = "-hasnt been scraped yet-")
 
     }
     data.push(key);
   });
-
-  // console.log(data)
 
   return { props: { data } };
 }
