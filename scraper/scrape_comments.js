@@ -1,5 +1,5 @@
 const axios = require("axios");
-const clientPromise = require("./lib/mongodb");
+const clientPromise = require("../lib/mongodb");
 const rateLimit = require("axios-rate-limit");
 const moment = require("moment");
 
@@ -21,6 +21,7 @@ async function kaas() {
   const posts = await db
     .collection("videos")
     .find({}, { _id: 0 })
+    .sort({date: -1})
     .toArray();
 
   // loop trough the videos and get the comments of each video

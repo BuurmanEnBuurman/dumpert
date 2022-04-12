@@ -1,0 +1,38 @@
+{
+    "id": 248769245,
+    "approved": true,
+    "article_id": 100027248,
+    "article_link": "https://www.dumpert.nl/item/100027248_5fe0dcc4/",
+    "article_title": "Beste plek voor spotters",
+    "author_is_newbie": false,
+    "author_username": "Harry_Wubbe",
+    "banned": false,
+    "child_comments": [
+        {
+            "approved": true,
+            "article_id": 100027248,
+            "article_link": "https://www.dumpert.nl/item/100027248_5fe0dcc4/",
+            "article_title": "Beste plek voor spotters",
+            "author_is_newbie": true,
+            "author_username": "interfect86",
+            "banned": false,
+            "creation_datetime": "2022-04-07T21:47:38Z",
+            "display_content": "Alsof je die kan vinden bij je opblaaspop..",
+            "html_markup": "<div class='cmt-conten'><p>Alsof je die kan vinden bij je opblaaspop..</p></div>",
+            "id": 248769266,
+            "is_author_premium_visible": false,
+            "kudos_count": 13,
+            "parent_id": 248769245,
+            "reference_id": 0,
+            "report_count": 0
+        }
+    ],
+    "creation_datetime": "2022-04-07T21:33:12Z",
+    "display_content": "Ik ben toch meer een g-spotter.",
+    "html_markup": "<div class='cmt-content'>\n<p>Ik ben toch meer een g-spotter.</p>\n </div>",
+    "is_author_premium_visible": false,
+    "kudos_count": 29,
+    "parent_id": 0,
+    "reference_id": 0,
+    "report_count": 0
+}
