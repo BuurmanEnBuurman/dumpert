@@ -15,3 +15,13 @@ TypeError: Cannot read properties of undefined (reading 'forEach')
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 
 Node.js v17.6.0
+
+add video to comment
+`db.videos.aggregate([{$lookup:{from:"videos",localField:"article_id",foreignField:"article_id",as:"video"}}])`
+
+`db.videos.aggregate([{$lookup:{from:"videos",localField:"article_id",foreignField:"article_id",as:"video"}},{$project:{date:1,upload_date:1,_id:0}}])`
+
+``db.videos.aggregate([{$lookup:{from:"videos",localField:"article_id",foreignField:"article_id",as:"video"}},{$group:{date_diff:{$subtract:[upload_date,date]}}}])
+``
+
+`db.createUser({ user: "baas" , pwd: "baas", roles: ["userAdminAnyDatabase", "dbAdminAnyDatabase", "readWriteAnyDatabase"]})`

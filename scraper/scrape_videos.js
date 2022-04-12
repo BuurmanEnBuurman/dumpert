@@ -25,6 +25,10 @@ async function kaas() {
     posts.data.items.forEach((post) => {
       post.article_id = parseInt(post.id.split("_")[0]);
 
+      // rename for the sake of clarity
+      post.upload_date = post.date
+      delete post.date
+
       db.collection("videos").updateOne(
         { id: post.id },
         { $set: post },
