@@ -4,10 +4,6 @@ import UrlToId from "../lib/urltoid";
 import Header from "../components/header";
 
 export default function Detail(props) {
-  // console.log(api_dumpert)
-  // console.log(api_db)
-  console.log(props);
-
   return (
     <>
       <Header />
