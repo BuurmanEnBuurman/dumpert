@@ -4,13 +4,14 @@ import styles from "../styles/Home.module.css";
 import clientPromise from "../lib/mongodb";
 import Comment from "../components/comment";
 import UrlToId from "../lib/urltoid";
+import Header from "../components/header";
 
 export default function Home({ data }) {
-  // console.log(data);
   return (
     <>
+      <Header/>
       {data.map((comment) => (
-        <Comment props={comment}/>
+        <Comment key={comment.id} props={comment}/>
       ))}
     </>
   );
