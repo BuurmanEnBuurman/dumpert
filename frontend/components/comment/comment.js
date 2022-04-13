@@ -5,9 +5,9 @@ export default function Comment(props){
     // console.log(comment)
     return (
         <div className={style.comment}>
-            <div>{comment.author_username}</div>
+            <div>{comment.author_username} zei:</div>
             <div>{comment.display_content}</div>
-            <div>{comment.content}</div>
+            <div className={style.removedcontent}>{comment.original_content}</div>
         </div>
     )
 }

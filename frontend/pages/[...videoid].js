@@ -66,7 +66,7 @@ export async function getServerSideProps(ctx) {
       });
       
       // check if comment is scraped 
-      chached_comment ? (key.content = chached_comment.display_content) : (key.content = "-hasnt been scraped yet-")
+      chached_comment ? (key.original_content = chached_comment.display_content) : (key.original_content = "-hasnt been scraped yet-")
 
     }
     data.push(key);
