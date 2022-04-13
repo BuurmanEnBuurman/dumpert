@@ -14,7 +14,7 @@ export default function Detail(props) {
       <>
         <div>
           <div>
-            locked?: {props.api_dumpert.summary.can_comment ? "yes" : "no"}
+            locked?: {props.api_dumpert.summary.can_comment ? "no" : "yes"}
           </div>
           <div>comments: {props.api_dumpert.summary.comment_count}</div>
           <div>last moderated: {props.api_dumpert.summary.moderated_at}</div>
