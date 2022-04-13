@@ -1,6 +1,7 @@
 const axios = require("axios");
 const clientPromise = require("./lib/mongodb");
 const rateLimit = require("axios-rate-limit");
+const moment = require("moment")
 
 // due to rate limiting of dumpert there is a limit of 400 request per minute, this prevents that request blocking ceiling
 const http = rateLimit(axios.create(), {
@@ -15,13 +16,15 @@ async function kaas() {
   let new_comments = 0;
   const db = (await clientPromise).db();
 
+  const kaas = moment().subtract(15, 'days').toDate().toISOString()
+
   // get all the videos so we can scrape them
   const posts = await db
     .collection("videos")
-    .find({}, { _id: 0 })
+    .find({upload_date: {$gte: kaas}}, { _id: 0 })
     .sort({"upload_date": -1})
     .toArray();
-    // console.log(posts)
+    console.log(posts)
 
   // loop trough the videos and get the comments of each video
   posts.forEach(async (element, video_index) => {
@@ -41,21 +44,19 @@ async function kaas() {
         { $set: comment },
         { upsert: true },
         (err, results) => {
-          // get callback and check if new data is found
+          // get callback and check if a new comment is found
           if (results.upsertedCount === 1) {
             new_comments++
-          }else{
-            // no new comments so we can stop the scrapeing
-            // process.exit(1)
           }
 
           console.clear();
-          console.log(`todo: ${posts.length - video_index} videos`);
+          console.log(`todo: ${posts.length - video_index } videos`);
           console.log(`found ${new_comments} new comments`);
         }
       );
     });
   });
+  console.log("re ")
 }
 
 kaas();
