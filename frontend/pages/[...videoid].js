@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import clientPromise from "../lib/mongodb";
 import Comment from "../components/comment";
+import UrlToId from "../lib/urltoid";
 
 export default function Home({ data }) {
   // console.log(data);
@@ -20,13 +21,15 @@ export async function getServerSideProps(ctx) {
   const db = (await clientPromise).db().collection("comments");
 
   // formats the videoid  from url:"item/100026917_8b87bdca" to normal id: 100026917
-  const video_id = parseInt(ctx.query.videoid[1].split("_")[0]);
+  // const video_id = parseInt(ctx.query.videoid[1].split("_")[0]);
+
+  const video_id = UrlToId(ctx.query)
 
   // console.log(video_id)
 
   let api_dumpert;
 
-  const url = `https://comments.dumpert.nl/api/v1.1/articles/${ctx.query.videoid[1].replace(
+  const url = `https://comments.dumpert.nl/api/v1.1/articles/${video_id.replace(
     "_",
     "/"
   )}/comments/?includeitems=1`;
