@@ -2,7 +2,6 @@ import clientPromise from "../lib/mongodb";
 import Comment from "../components/comment";
 import UrlToId from "../lib/urltoid";
 import Header from "../components/header";
-const { URL } = process.env;
 
 export default function Detail({data}) {
   // console.log(api_dumpert)
@@ -27,7 +26,7 @@ export async function getServerSideProps(ctx) {
 
   let api_dumpert;
   const dumpert_id = video_id.replace("_","/")
-  await fetch(`https://comments.dumpert.nl/api/v1.1/articles/${dumpert_id}/comments/?includeitems=1`).then(res => res.json()).then(data => api_dumpert = data.data.comments)
+  await fetch(`https://comments.dumpert.nl/api/v1.1/articles/${dumpert_id}/comments/?includeitems=1`).then(res => res.json()).then(res => api_dumpert = res.data.comments)
 
   const api_db = await db
     .find({ article_id: video_id }, { projection: { _id: 0 } })
