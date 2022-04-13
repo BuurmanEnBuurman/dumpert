@@ -20,12 +20,8 @@ export async function getServerSideProps(ctx) {
   // Fetch data from external API
   const db = (await clientPromise).db().collection("comments");
 
-  // formats the videoid  from url:"item/100026917_8b87bdca" to normal id: 100026917
-  // const video_id = parseInt(ctx.query.videoid[1].split("_")[0]);
-
+  // formats to a video id as described by the api
   const video_id = UrlToId(ctx.query)
-
-  // console.log(video_id)
 
   let api_dumpert;
 
