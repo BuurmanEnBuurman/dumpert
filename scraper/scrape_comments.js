@@ -1,7 +1,6 @@
 const axios = require("axios");
-const clientPromise = require("../lib/mongodb");
+const clientPromise = require("./lib/mongodb");
 const rateLimit = require("axios-rate-limit");
-const moment = require("moment");
 
 // due to rate limiting of dumpert there is a limit of 400 request per minute, this prevents that request blocking ceiling
 const http = rateLimit(axios.create(), {
@@ -16,13 +15,13 @@ async function kaas() {
   let new_comments = 0;
   const db = (await clientPromise).db();
 
-
   // get all the videos so we can scrape them
   const posts = await db
     .collection("videos")
     .find({}, { _id: 0 })
-    .sort({date: -1})
+    .sort({"upload_date": -1})
     .toArray();
+    // console.log(posts)
 
   // loop trough the videos and get the comments of each video
   posts.forEach(async (element, video_index) => {

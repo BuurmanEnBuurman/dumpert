@@ -1,5 +1,5 @@
 const axios = require("axios");
-const clientPromise = require("../lib/mongodb");
+const clientPromise = require("./lib/mongodb");
 const rateLimit = require("axios-rate-limit");
 
 // due to rate limiting of dumpert there is a limit of 400 request per minute, this prevents that request blocking ceiling
