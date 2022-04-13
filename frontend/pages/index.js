@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 export default function Home() {
   return (
     <>
-    asdasd
+      <div>please replace dumpert.nl to localhost:3000 to see removed comments</div>
     </>
   )
 }
