@@ -5,7 +5,7 @@ export default function Header(){
     return(
         <div className={style.header}>
         <div className={style.title}>terug gejorist</div>
-        <Link href="github.com/buurmanEnBuurman/dumpert"><div className={style.sourcecode}>bron code</div></Link>
+        <Link href="https://github.com/buurmanEnBuurman/dumpert"><div className={style.sourcecode}>bron code</div></Link>
         </div>
     )
 }
