@@ -29,7 +29,7 @@ export async function getServerSideProps(ctx) {
 
   let api_dumpert;
 
-  const url = `https://comments.dumpert.nl/api/v1.1/articles/${ctx.query.videoid[1].replace(
+  const url = `https://comments.dumpert.nl/api/v1.1/articles/${video_id.replace(
     "_",
     "/"
   )}/comments/?includeitems=1`;

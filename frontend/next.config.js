@@ -6,7 +6,12 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/\\?selectedId=\\:slug',
+        source: '/',
+        has:[{
+          type: "query",
+          key: "selectedId",
+          // value: "kaas"
+        }],
         destination: '/items/', // Matched parameters can be used in the destination
         permanent: false,
       },
