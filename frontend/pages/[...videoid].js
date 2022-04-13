@@ -1,12 +1,13 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import clientPromise from "../lib/mongodb";
 import Comment from "../components/comment";
 import UrlToId from "../lib/urltoid";
 import Header from "../components/header";
+const { URL } = process.env;
 
-export default function Home({ data }) {
+export default function Detail({data}) {
+  // console.log(api_dumpert)
+  // console.log(api_db)
+
   return (
     <>
       <Header/>
@@ -25,33 +26,8 @@ export async function getServerSideProps(ctx) {
   const video_id = UrlToId(ctx.query)
 
   let api_dumpert;
-
-  const url = `https://comments.dumpert.nl/api/v1.1/articles/${video_id.replace(
-    "_",
-    "/"
-  )}/comments/?includeitems=1`;
-
-  await fetch(url, {
-    credentials: "include",
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (X11; Linux x86_64; rv:98.0) Gecko/20100101 Firefox/98.0",
-      Accept: "application/json",
-      "Accept-Language": "en-US,en;q=0.5",
-      "content-type": "application/json",
-      "Sec-Fetch-Dest": "empty",
-      "Sec-Fetch-Mode": "cors",
-      "Sec-Fetch-Site": "same-site",
-      Pragma: "no-cache",
-      "Cache-Control": "no-cache",
-    },
-    referrer: "https://www.dumpert.nl/",
-    method: "GET",
-    mode: "cors",
-  })
-    .then((res) => res.json())
-    .then((rj) => (api_dumpert = rj.data.comments))
-    .catch((error) => new error(error));
+  const dumpert_id = video_id.replace("_","/")
+  await fetch(`https://comments.dumpert.nl/api/v1.1/articles/${dumpert_id}/comments/?includeitems=1`).then(res => res.json()).then(data => api_dumpert = data.data.comments)
 
   const api_db = await db
     .find({ article_id: video_id }, { projection: { _id: 0 } })
