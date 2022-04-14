@@ -1,4 +1,4 @@
-// import { clientPromise } from "../lib/mongodb";
+// import clientPromise from "../lib/mongodb";
 const http = require("http");
 const mock_comment = require("./mockdata/comment.json")
 
