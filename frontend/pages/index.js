@@ -21,17 +21,16 @@ export default function Home(props) {
           and my database
         </p>
         <p>
-
-          example: 
-          <br/>
+          example:
+          <br />
           https://www.dumpert.nl/item/100026920_f0089181/
           <br />
-          to 
+          to
           <br />
           {props.URL}/item/100026920_f0089181/
-          <br/>
+          <br />
           or
-          <br/>
+          <br />
           {props.URL}/item?selectedId=100027744_d54603bb
         </p>
         <p>
