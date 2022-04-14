@@ -4,6 +4,7 @@ import UrlToId from "../lib/urltoid";
 import Header from "../components/header";
 
 export default function Detail(props) {
+  console.log(props)
   return (
     <>
       <Header />

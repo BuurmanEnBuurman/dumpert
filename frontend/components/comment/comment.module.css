@@ -1,6 +1,7 @@
 .comment{
     border: 1px black solid;
     width: 70%;
+    position: relative;
     
 }
 .comment_content{
@@ -8,4 +9,18 @@
 }
 .removedcontent{
     background-color: red;
+}
+.helpbutton{
+    /* float: right; */
+    width: 30px;
+    position: absolute;
+    /* background-color: gold; */
+    top: 0px;
+    right: 0px; 
+}
+.metadatabox{
+    background-color: white;
+    position: absolute;
+    border: 1px solid black;
+    z-index: 100;
 }
