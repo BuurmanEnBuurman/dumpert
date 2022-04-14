@@ -11,12 +11,12 @@ export default function Comment(props) {
       <div>{comment.display_content}</div>
       <div className={style.removedcontent}>{comment.original_content}</div>
 
-      <Image
+      <img
         onMouseOut={() => SetShowMetaData(false)}
         onMouseEnter={() => SetShowMetaData(true)}
         className={style.helpbutton}
-        height={15}
-        width={15}
+        height="15px"
+        width="15px"
         src="/question.svg"
       />
 

@@ -1,8 +1,9 @@
 .comment{
     border: 1px black solid;
-    width: 70%;
-    position: relative;
-    
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 20px;
+    position: relative;    
 }
 .comment_content{
     
@@ -11,16 +12,19 @@
     background-color: red;
 }
 .helpbutton{
-    /* float: right; */
+    float: right;
     width: 30px;
     position: absolute;
-    /* background-color: gold; */
     top: 0px;
     right: 0px; 
+    margin: 2px;
 }
 .metadatabox{
     background-color: white;
     position: absolute;
     border: 1px solid black;
     z-index: 100;
+    float: right;
+    top: 40px;
+    right: 0px; 
 }

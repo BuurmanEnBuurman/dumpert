@@ -2,9 +2,11 @@ import clientPromise from "../lib/mongodb";
 import Comment from "../components/comment";
 import UrlToId from "../lib/urltoid";
 import Header from "../components/header";
+import style from "../styles/Detail.module.css"
 
 export default function Detail(props) {
-  console.log(props)
+  const DateStringOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
   return (
     <>
       <Header />
@@ -14,11 +16,13 @@ export default function Detail(props) {
             locked?: {props.api_dumpert.summary.can_comment ? "no" : "yes"}
           </div>
           <div>comments: {props.api_dumpert.summary.comment_count}</div>
-          <div>last moderated: {props.api_dumpert.summary.moderated_at}</div>
+          <div>last moderated: {new Date(props.api_dumpert.summary.moderated_at).toLocaleDateString("nl-NL",DateStringOptions) }</div>
         </div>
+        <div className={style.commentblock}>
         {props.comments.map((comment) => (
           <Comment key={comment.id} props={comment} />
         ))}
+        </div>
       </>
     </>
   );
