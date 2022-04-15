@@ -12,16 +12,16 @@ const http = rateLimit(axios.create(), {
 
 console.log("start");
 
-async function kaas() {
+async function scrape_comments() {
   let new_comments = 0;
   const db = (await clientPromise).db();
 
-  const kaas = moment().subtract(15, 'days').toDate().toISOString()
+  const ScrapingPeriod = moment().subtract(15, 'days').toDate().toISOString()
 
   // get all the videos so we can scrape them
   const posts = await db
     .collection("videos")
-    .find({upload_date: {$gte: kaas}}, { _id: 0 })
+    .find({upload_date: {$gte: ScrapingPeriod}}, { _id: 0 })
     .sort({"upload_date": -1})
     .toArray();
     console.log(posts)
@@ -59,6 +59,6 @@ async function kaas() {
   console.log("re ")
 }
 
-kaas();
+scrape_comments();
 
 console.log("done");
