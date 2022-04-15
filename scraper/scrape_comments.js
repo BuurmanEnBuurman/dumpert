@@ -24,7 +24,6 @@ async function scrape_comments() {
     .find({upload_date: {$gte: ScrapingPeriod}}, { _id: 0 })
     .sort({"upload_date": -1})
     .toArray();
-    console.log(posts)
 
   // loop trough the videos and get the comments of each video
   posts.forEach(async (element, video_index) => {
@@ -44,6 +43,10 @@ async function scrape_comments() {
         { $set: comment },
         { upsert: true },
         (err, results) => {
+          if(err){
+            console.error(err)
+          }
+
           // get callback and check if a new comment is found
           if (results.upsertedCount === 1) {
             new_comments++
@@ -56,9 +59,7 @@ async function scrape_comments() {
       );
     });
   });
-  console.log("re ")
+  console.log("done")
 }
 
 scrape_comments();
-
-console.log("done");

@@ -11,7 +11,7 @@ const http = rateLimit(axios.create(), {
 
 console.log("start");
 
-async function kaas() {
+async function scrape_videos() {
   let new_posts = 0;
   const db = (await clientPromise).db();
 
@@ -53,4 +53,4 @@ async function kaas() {
   }
 }
 
-kaas();
+scrape_videos();
