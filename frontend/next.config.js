@@ -1,7 +1,3 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   reactStrictMode: true,
-// }
 module.exports = {
   async redirects() {
     return [
@@ -19,17 +15,18 @@ module.exports = {
   },
   async headers() {
     return [
-      { 
-        source: '/:path*{/}?',
+      {
+        // solution source for ReferenceError: SharedArrayBuffer is not defined https://github.com/ffmpegwasm/ffmpeg.wasm/issues/263#issuecomment-1007050005
+        source: '/:path*',
         headers: [
+          {
+            key: 'Cross-Origin-Embedder-Policy',
+            value: 'require-corp',
+          },
           {
             key: 'Cross-Origin-Opener-Policy',
             value: 'same-origin',
           },
-          {
-            key: "Cross-Origin-Embedder-Policy",
-            value: "require-corp"
-          }
         ],
       },
     ]
