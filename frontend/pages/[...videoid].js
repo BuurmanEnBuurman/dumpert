@@ -3,6 +3,7 @@ import Comment from "../components/comment";
 import UrlToId from "../lib/urltoid";
 import Header from "../components/header";
 import style from "../styles/Detail.module.css"
+import DownloadVideo from "../components/downloadvideo";
 
 export default function Detail(props) {
   const DateStringOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -17,6 +18,7 @@ export default function Detail(props) {
           </div>
           <div>comments: {props.api_dumpert.summary.comment_count}</div>
           <div>last moderated: {new Date(props.api_dumpert.summary.moderated_at).toLocaleDateString("nl-NL",DateStringOptions) }</div>
+          <DownloadVideo/>
         </div>
         <div className={style.commentblock}>
         {props.comments.map((comment) => (

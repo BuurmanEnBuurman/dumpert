@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.10.1",
     "axios": "^0.26.1",
     "mongodb": "^4.4.1",
     "next": "12.1.4",

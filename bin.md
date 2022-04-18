@@ -21,7 +21,8 @@ add video to comment
 
 see biggest diffrance between video upload and comment post
 ```
-db.comments.aggregate([{ $lookup: { from: 'videos', localField: 'article_id', foreignField: 'article_id', as: 'video' } }, { $addFields: { video_upload: { $toDate: { $first: '$video.upload_date' } }, comment_creation: { $toDate: '$creation_datetime' } } }, { $addFields: { date_diff: { $subtract: [ '$comment_creation', '$video_upload'] } } }, { $project: { _id: 0, video_upload: 1, comment_creation: 1, date_diff: 1, kaas: 1 } }])
+db.comments.aggregate([{ $lookup: { from: 'videos', localField: 'article_id', foreignField: 'article_id', as: 'video' } }, { $addFields: { video_upload: { $toDate: { $first: '$video.upload_date' } }, comment_creation: { $toDate: '$creation_datetime' } } }, { $addFields: { date_diff: { $subtract: [ '$comment_creation', '$video_upload'] } } }, { $project: { _id: 0, video_upload: 1, comment_creation: 1, date_diff: 1, kaas: 1 } },{$sort:{"date_diff":-1}}])
+
 ```
 
 `db.videos.aggregate([{$lookup:{from:"videos",localField:"article_id",foreignField:"article_id",as:"video"}},{$project:{date:1,upload_date:1,_id:0}}])`
