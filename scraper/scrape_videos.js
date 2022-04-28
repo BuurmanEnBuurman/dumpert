@@ -21,6 +21,11 @@ async function scrape_videos() {
     const posts = await http.get(
       `https://api-live.dumpert.nl/mobile_api/json/latest/${index}/`
     );
+    
+    // sometimes the dumpert api likes to fuck with us by throwing a 504 so we can skip this data
+    if(posts.statusCode === 504){
+      continue;
+    }
 
     posts.data.items.forEach((post) => {
       post.article_id = parseInt(post.id.split("_")[0]);

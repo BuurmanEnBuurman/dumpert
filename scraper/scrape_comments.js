@@ -1,7 +1,8 @@
 const axios = require("axios");
 const clientPromise = require("./lib/mongodb");
 const rateLimit = require("axios-rate-limit");
-const moment = require("moment")
+const moment = require("moment");
+const format_comment = require("./lib/format_comment");
 
 // due to rate limiting of dumpert there is a limit of 400 request per minute, this prevents that request blocking ceiling
 const http = rateLimit(axios.create(), {
@@ -36,7 +37,8 @@ async function scrape_comments() {
     // due to limitations we need to insert each comment seprate to prevent duplactation
     comments.data.data.comments.forEach((comment) => {
       // remove unessecery data
-      delete html_markup;
+      comment = format_comment(comment)
+
 
       db.collection("comments").updateOne(
         { id: comment.id },
