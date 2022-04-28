@@ -16,7 +16,7 @@ export default function DownloadVideo(props) {
     });
 
     const video_url =
-      "http://localhost:5000/https://media.dumpert.nl/dmp/media/video/5/3/5/5358f72c-65bf-6ba1-958b-ca82167926fd/480/index.m3u8";
+      "http://localhost:8080/https://media.dumpert.nl/dmp/media/video/5/3/5/5358f72c-65bf-6ba1-958b-ca82167926fd/480/index.m3u8";
 
     // await ffmpeg.load();
     // // ffmpeg.FS("writeFile", "test.avi", await fetchFile("./test.avi"));
@@ -37,8 +37,8 @@ export default function DownloadVideo(props) {
       "test.mp4",
       await fetchFile(video_url)
     );
-    await ffmpeg.run("-i", video_url, "-c","copy","asad.mp4");
-    const data = ffmpeg.FS("readFile", "asad.mp4");
+    await ffmpeg.run("-i", video_url, "-c","copy","test.mp4");
+    const data = await ffmpeg.FS("readFile", "test.mp4");
     setVideoSrc(
       URL.createObjectURL(new Blob([data.buffer], { type: "video/mp4" }))
     );
