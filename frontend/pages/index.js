@@ -1,6 +1,6 @@
 import style from "../styles/Home.module.css";
 import Header from "../components/header";
-const { URL } = process.env;
+const { NEXT_PUBLIC_URL } = process.env;
 
 export default function Home(props) {
   return (
@@ -45,6 +45,6 @@ export default function Home(props) {
 export async function getStaticProps(ctx) {
   // returns the base url so the url is not hard coded
   return {
-    props: { URL },
+    props: {"url":NEXT_PUBLIC_URL},
   };
 }

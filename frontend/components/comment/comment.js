@@ -14,6 +14,7 @@ export default function Comment(props) {
       <img
         onMouseOut={() => SetShowMetaData(false)}
         onMouseEnter={() => SetShowMetaData(true)}
+        alt="photo "
         className={style.helpbutton}
         height="15px"
         width="15px"
