@@ -17,17 +17,19 @@ async function scrape_comments() {
   let new_comments = 0;
   const db = (await clientPromise).db();
 
-  const ScrapingPeriod = moment().subtract(15, 'days').toDate().toISOString()
+  const ScrapingPeriod = moment().subtract(1, "days").toDate().toISOString();
 
   // get all the videos so we can scrape them
   const posts = await db
     .collection("videos")
-    .find({upload_date: {$gte: ScrapingPeriod}}, { _id: 0 })
-    .sort({"upload_date": -1})
+    .find({ upload_date: { $gte: ScrapingPeriod } }, { _id: 0 })
+    .sort({ upload_date: -1 })
     .toArray();
 
   // loop trough the videos and get the comments of each video
-  posts.forEach(async (element, video_index) => {
+  for (let index = 0; index < posts.length; index++) {
+    const element = posts[index];
+
     const id = element.id.replace("_", "/");
     // fetch comments from 1 video
     const comments = await http.get(
@@ -35,33 +37,35 @@ async function scrape_comments() {
     );
 
     // due to limitations we need to insert each comment seprate to prevent duplactation
-    comments.data.data.comments.forEach((comment) => {
+    comments.data.data.comments.forEach(async (comment) => {
       // remove unessecery data
-      comment = format_comment(comment)
+      comment = format_comment(comment);
 
+      await db
+        .collection("comments")
+        .updateOne(
+          { id: comment.id },
+          { $set: comment },
+          { upsert: true },
+          (err, results) => {
+            if (err) {
+              console.error(err);
+            }
 
-      db.collection("comments").updateOne(
-        { id: comment.id },
-        { $set: comment },
-        { upsert: true },
-        (err, results) => {
-          if(err){
-            console.error(err)
+            // get callback and check if a new comment is found
+            if (results.upsertedCount === 1) {
+              new_comments++;
+            }
+
+            // console.clear();
+            console.log(`todo: ${posts.length - index} videos`);
+            console.log(`found ${new_comments} new comments`);
           }
-
-          // get callback and check if a new comment is found
-          if (results.upsertedCount === 1) {
-            new_comments++
-          }
-
-          console.clear();
-          console.log(`todo: ${posts.length - video_index } videos`);
-          console.log(`found ${new_comments} new comments`);
-        }
-      );
+        );
     });
-  });
-  console.log("done")
+  }
+  process.exit(1)
 }
 
 scrape_comments();
+
