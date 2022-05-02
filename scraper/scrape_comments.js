@@ -57,7 +57,7 @@ async function scrape_comments() {
               new_comments++;
             }
 
-            // console.clear();
+            console.clear();
             console.log(`todo: ${posts.length - index} videos`);
             console.log(`found ${new_comments} new comments`);
           }
