@@ -17,7 +17,7 @@ async function scrape_comments() {
   let new_comments = 0;
   const db = (await clientPromise).db();
 
-  const ScrapingPeriod = moment().subtract(1, "days").toDate().toISOString();
+  const ScrapingPeriod = moment().subtract(15, "days").toDate().toISOString();
 
   // get all the videos so we can scrape them
   const posts = await db
