@@ -10,7 +10,6 @@ module.exports = {
         has:[{
           type: "query",
           key: "selectedId",
-          value: "kaas"
         }],
         destination: '/items/', // Matched parameters can be used in the destination
         permanent: false,
