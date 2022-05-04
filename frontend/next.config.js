@@ -11,7 +11,7 @@ module.exports = {
           type: "query",
           key: "selectedId",
         }],
-        destination: '/items/', // Matched parameters can be used in the destination
+        destination: '/item/:selectedId*', // Matched parameters can be used in the destination
         permanent: false,
       },
     ]
