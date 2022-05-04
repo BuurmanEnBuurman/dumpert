@@ -44,7 +44,7 @@ async function scrape_comments() {
       await db
         .collection("comments")
         .updateOne(
-          { id: comment.id },
+          { "id": parseInt(comment.id) },
           { $set: comment },
           { upsert: true },
           (err, results) => {
@@ -52,6 +52,8 @@ async function scrape_comments() {
               console.error(err);
             }
 
+
+            
             // get callback and check if a new comment is found
             if (results.upsertedCount === 1) {
               new_comments++;

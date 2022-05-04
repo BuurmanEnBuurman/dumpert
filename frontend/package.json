@@ -12,6 +12,7 @@
     "axios": "^0.26.1",
     "mongodb": "^4.4.1",
     "next": "12.1.4",
+    "next-sitemap": "^2.5.20",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },
