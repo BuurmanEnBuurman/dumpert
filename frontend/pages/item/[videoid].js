@@ -1,8 +1,8 @@
-import clientPromise from "../lib/mongodb";
-import Comment from "../components/comment";
-import UrlToId from "../lib/urltoid";
-import Header from "../components/header";
-import style from "../styles/Detail.module.css"
+import clientPromise from "../../lib/mongodb";
+import Comment from "../../components/comment";
+import UrlToId from "../../lib/urltoid";
+import Header from "../../components/header";
+import style from "../../styles/Detail.module.css"
 
 export default function Detail(props) {
   const DateStringOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
