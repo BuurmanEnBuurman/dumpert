@@ -1,0 +1,31 @@
+_id: req_c5e7a0e650d2465d884f6309a7d17a33
+type: Request
+parentId: wrk_251759449c184d36b64a271e88e02f45
+modified: 1651843045288
+created: 1651842318491
+url: http://localhost:3000/api/graphql
+name: My Request
+description: ""
+method: POST
+body:
+  mimeType: application/graphql
+  text: '{"query":"query ($id: String) {\n\tgetVideoMeta(id: $id)
+    {\n\t\tid\n\t\tarticle_id\n\t\tdescription\n\t\tmedia_type\n\t\tnopreroll\n\t\tnsfw\n\t\tscripts\n\t\tsecret\n\t\tstill\n\t\ttags\n\t\tthumbnail\n\t\ttitle\n\t\tupload_id\n\t\tupload_date\n\t\tmedia
+    {\n\t\t\tdescription\n\t\t\tduration\n\t\t\tmediatype\n\t\t\t#             variants
+    # fixme\n\t\t}\n\t\tstats
+    {\n\t\t\tkudos_today\n\t\t\tkudos_total\n\t\t\tviews_today\n\t\t\tviews_total\n\t\t}\n\t\tstills
+    {\n\t\t\tthumb\n\t\t\tstill_large\n\t\t\tstill_medium\n\t\t\tthumb_medium\n\t\t}\n\t}\n}\n","variables":{"id":"100028203_dc86f4f1"}}'
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_9225c474df9e4ee6823670500ca57078
+authentication: {}
+metaSortKey: -1651842318491
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
