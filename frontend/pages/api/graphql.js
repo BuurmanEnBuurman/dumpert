@@ -1,5 +1,5 @@
 import { gql, ApolloServer } from "apollo-server-micro";
-import clientPromise from "../../lib/mongodb"
+import clientPromise from "../../lib/mongodb";
 
 const typeDefs = gql`
   type User {
@@ -52,24 +52,31 @@ const typeDefs = gql`
     stats: VideoMediaStats
     stills: VideoMediaStills
   }
+  type article_id {
+    article_id: ID
+  }
 
   type Query {
     getUser: User
     getVideoMeta: Video
+    article_id: article_id
   }
 `;
 
 const resolvers = {
-  Query: {
+  query: {
     getUser: () => {
       return {
         id: "ID",
       };
     },
+    article_id: (_, args) => {
+      console.log(args);
+    },
     getVideoMeta: async (_, args) => {
-      const db = (await clientPromise).db()
-      const data = await db.collection("videos").findOne({})
-      console.log(args)
+      // const db = (await clientPromise).db()
+      // const data = await db.collection("videos").findOne({})
+      console.log(args);
 
       return {
         id: "Foo",
