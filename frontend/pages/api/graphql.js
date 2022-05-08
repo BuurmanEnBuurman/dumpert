@@ -52,14 +52,14 @@ const typeDefs = gql`
     stats: VideoMediaStats
     stills: VideoMediaStills
   }
-  type article_id {
+  type Article_id {
     article_id: ID
   }
 
   type Query {
     getUser: User
     getVideoMeta: Video
-    article_id: article_id
+    getArticle_id: Article_id
   }
 `;
 
