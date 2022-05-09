@@ -47,11 +47,11 @@ async function kaas() {
 async function formatToCSV(object){
   console.log("starting csv module")
 
-  var regex = /[.,'"!?\s]/g;
+  var regex = /[.,'"!?<>`+=_-\s]/g;
   let csv = ""
 
   // create table name
-  // csv += "count,word\r\n"
+  csv += "count,word\r\n"
 
   object.forEach(element=>{
     const word = element.word.replace(regex, '');
