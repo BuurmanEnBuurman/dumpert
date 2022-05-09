@@ -11,10 +11,11 @@ async function kaas() {
     .find({}, { projection: { _id: 0, display_content: 1 } })
     // .limit(100)
     .toArray();
-  console.log(data.length);
+  console.log(`comments: ${data.length}`);
 
   // loop trough the sentences
-  data.forEach((sentence) => {
+  data.forEach((sentence,index) => {
+    console.log(index)
     // loop trough the words
     sentence.display_content
       .toLowerCase()
