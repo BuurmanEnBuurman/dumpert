@@ -1,6 +1,5 @@
 const clientPromise = require("../lib/mongodb");
 const fs = require("fs");
-const { WordCloud } = require("d3-cloud");
 
 let results = [];
 
@@ -38,27 +37,25 @@ async function kaas() {
         }
       });
 
-    // fs.writeFileSync("./kaas.json", JSON.stringify(results));
   });
-  // console.log(results);
   await formatToCSV(results)
 }
 
 async function formatToCSV(object){
   console.log("starting csv module")
 
+  // remove some special characters
   var regex = /[.,'"!?<>`+=_-\s]/g;
   let csv = ""
 
   // create table name
   csv += "count,word\r\n"
 
+  // new collum
   object.forEach(element=>{
-    const word = element.word.replace(regex, '');
-
     csv += element.count
     csv += ","
-    csv += word
+    csv += element.word.replace(regex, '');
 
     // new line
     csv += "\r\n"
